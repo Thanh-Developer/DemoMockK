@@ -1,24 +1,40 @@
 package com.demo.mockk.utils
 
-import android.content.Context
+import androidx.annotation.VisibleForTesting
+import java.util.regex.Pattern
 
 /**
  * Created by ThanhPQ
  */
-class ValidateUtils(private val context: Context) {
+class ValidateUtils {
 
     companion object {
         const val MIN_CHARACTER_PASSWORD = 3
     }
 
-    fun validateUsername(email: String): Boolean = when {
-        email.isEmpty() -> false
+    @VisibleForTesting
+    fun isWhitespace(s: String): Boolean {
+        for (element in s) {
+            if (Character.isWhitespace(element)) {
+                return true
+            }
+        }
+        return false
+    }
+
+    @VisibleForTesting
+    fun validateUsername(email: String?): Boolean = when {
+        email.isNullOrEmpty() -> false
+        email.isBlank() -> false
+        isWhitespace(email) -> false
         else -> true
     }
 
-    fun validatePassword(password: String): Boolean = when {
-        password.isEmpty() -> false
-        password.trim().isEmpty() -> false
+    @VisibleForTesting
+    fun validatePassword(password: String?): Boolean = when {
+        password.isNullOrEmpty() -> false
+        password.isBlank() -> false
+        isWhitespace(password) -> false
         password.length < MIN_CHARACTER_PASSWORD -> false
         else -> true
     }

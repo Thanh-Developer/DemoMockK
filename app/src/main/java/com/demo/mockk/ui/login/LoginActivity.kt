@@ -2,6 +2,7 @@ package com.demo.mockk.ui.login
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -9,6 +10,7 @@ import androidx.lifecycle.Observer
 import com.demo.mockk.R
 import com.demo.mockk.databinding.ActivityLoginBinding
 import com.demo.mockk.ui.main.MainActivity
+import com.google.android.material.snackbar.Snackbar
 import org.koin.android.viewmodel.ext.android.viewModel
 
 /**
@@ -42,7 +44,11 @@ class LoginActivity : AppCompatActivity() {
 
             obsMessageError.observe(this@LoginActivity, Observer {
                 if (it != null) {
-                    Toast.makeText(this@LoginActivity, it, Toast.LENGTH_LONG).show()
+                    Snackbar.make(
+                        findViewById(android.R.id.content),
+                        getString(it),
+                        Snackbar.LENGTH_LONG
+                    ).show()
                 }
             })
         }
@@ -51,7 +57,11 @@ class LoginActivity : AppCompatActivity() {
     private fun startMain(isLogin: Boolean) = if (isLogin) {
         startActivity(Intent(this, MainActivity::class.java))
     } else {
-        Toast.makeText(this, "Login fail!", Toast.LENGTH_LONG).show()
+        Snackbar.make(
+            findViewById(android.R.id.content),
+            getString(R.string.login_fail),
+            Snackbar.LENGTH_LONG
+        ).show()
     }
 
 }

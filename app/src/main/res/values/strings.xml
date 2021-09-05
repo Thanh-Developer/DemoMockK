@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">DemoMockK</string>
+
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="login_fail">Login fail!</string>d
+    <string name="incorrect_username_password">Username and Password cannot be blank or have spaces</string>
+
 </resources>
