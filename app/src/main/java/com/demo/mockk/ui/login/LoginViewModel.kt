@@ -1,8 +1,11 @@
 package com.demo.mockk.ui.login
 
+import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.demo.mockk.R
 import com.demo.mockk.data.remote.LoginRequest
+import com.demo.mockk.data.remote.LoginResponse
 import com.demo.mockk.data.repository.LoginRepository
 import com.demo.mockk.utils.ValidateUtils
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -26,19 +29,21 @@ class LoginViewModel(
     private val disposable = CompositeDisposable()
     val obsUsername = MutableLiveData<String>()
     val obsPassword = MutableLiveData<String>()
-    val obsMessageError = MutableLiveData<String>()
+    val obsMessageError = MutableLiveData<Int>()
     val isLoginSuccess = MutableLiveData<Boolean>()
 
-    private fun checkValidate(): Boolean {
+    @VisibleForTesting
+    fun checkValidate(): Boolean {
         if (!validateUtils.validateUsername(obsUsername.value.toString()) ||
             !validateUtils.validatePassword(obsPassword.value.toString())
         ) {
-            obsMessageError.value = "username and password cannot be blank or have spaces"
+            obsMessageError.value = R.string.incorrect_username_password
             return false
         }
         return true
     }
 
+    @VisibleForTesting
     fun onLogin() {
         if (checkValidate()) {
             disposable.add(loginRepository.userLogin(
@@ -53,21 +58,26 @@ class LoginViewModel(
                 print("Show loading")
             }.doFinally {
                 print("Hide loading")
-            }.doOnSuccess { loginResponse ->
-                print("LoginResponse: $loginResponse")
-            }.subscribe({
-                isLoginSuccess.value = true
+            }.subscribe({ loginResponse ->
+                onLoadSuccess(loginResponse)
             }, {
-                isLoginSuccess.value = false
+                onLoadFail()
             })
             )
         }
     }
 
+    fun onLoadSuccess(loginResponse: LoginResponse) {
+        print("LoginResponse: $loginResponse")
+        isLoginSuccess.value = true
+    }
+
+    fun onLoadFail() {
+        isLoginSuccess.value = false
+    }
+
     override fun onCleared() {
         super.onCleared()
-        if (disposable != null) {
-            disposable.clear()
-        }
+        disposable.clear()
     }
 }
