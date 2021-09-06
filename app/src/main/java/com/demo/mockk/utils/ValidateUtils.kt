@@ -1,10 +1,9 @@
 package com.demo.mockk.utils
 
 import androidx.annotation.VisibleForTesting
-import java.util.regex.Pattern
 
 /**
- * Created by ThanhPQ
+ * Create by ThanhPQ
  */
 class ValidateUtils {
 

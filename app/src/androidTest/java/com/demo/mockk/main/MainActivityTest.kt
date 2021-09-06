@@ -6,6 +6,9 @@ import com.demo.mockk.ui.main.MainActivity
 import org.junit.Rule
 import org.junit.runner.RunWith
 
+/**
+ * Create by ThanhPQ
+ */
 @RunWith(AndroidJUnit4::class)
 class MainActivityTest {
     @Rule

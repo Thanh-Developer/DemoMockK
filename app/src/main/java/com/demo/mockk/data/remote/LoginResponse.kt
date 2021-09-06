@@ -1,7 +1,7 @@
 package com.demo.mockk.data.remote
 
 /**
- * Created by ThanhPQ
+ * Create by ThanhPQ
  */
 data class LoginResponse(
     var user_id: Int = 0,

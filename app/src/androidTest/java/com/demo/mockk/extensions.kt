@@ -10,6 +10,9 @@ import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.*
 import org.hamcrest.Matchers.allOf
 
+/**
+ * Create by ThanhPQ
+ */
 val isDisplayed: ViewAssertion = matches(isDisplayed())
 
 fun toolbarWithTitle(@StringRes title: Int): ViewInteraction =

@@ -5,7 +5,7 @@ import android.os.Bundle
 import com.demo.mockk.R
 
 /**
- * Created by ThanhPQ
+ * Create by ThanhPQ
  */
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

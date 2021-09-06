@@ -7,7 +7,7 @@ import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
 
 /**
- * Created by ThanhPQ
+ * Create by ThanhPQ
  */
 class MainApplication : Application() {
     override fun onCreate() {

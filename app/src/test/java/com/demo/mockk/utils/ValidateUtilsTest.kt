@@ -6,6 +6,9 @@ import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Test
 
+/**
+ * Create by ThanhPQ
+ */
 class ValidateUtilsTest {
     @MockK
     private lateinit var validateUtils: ValidateUtils
