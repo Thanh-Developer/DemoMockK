@@ -13,7 +13,7 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 
 /**
- * Created by ThanhPQ
+ * Create by ThanhPQ
  *
  * Account demo login
  * @UserName1: larn203

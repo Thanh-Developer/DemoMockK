@@ -5,6 +5,9 @@ import androidx.test.espresso.action.ViewActions.typeText
 import com.demo.mockk.*
 import java.lang.Thread.sleep
 
+/**
+ * Create by ThanhPQ
+ */
 @DslMarker
 private annotation class TestRobotMarker
 

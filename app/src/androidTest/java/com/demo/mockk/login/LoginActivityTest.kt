@@ -8,6 +8,9 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 
+/**
+ * Create by ThanhPQ
+ */
 @RunWith(AndroidJUnit4::class)
 class LoginActivityTest {
     @Rule

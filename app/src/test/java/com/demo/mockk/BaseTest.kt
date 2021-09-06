@@ -1,14 +1,19 @@
 package com.demo.mockk
 
 import io.mockk.MockKAnnotations
+import io.mockk.unmockkAll
 import io.reactivex.android.plugins.RxAndroidPlugins
 import io.reactivex.plugins.RxJavaPlugins
 import io.reactivex.schedulers.Schedulers
+import org.junit.After
 import org.junit.Before
 import org.mockito.Mockito
 import org.mockito.MockitoAnnotations
 import org.mockito.stubbing.OngoingStubbing
 
+/**
+ * Create by ThanhPQ
+ */
 open class BaseTest {
 
     @Before
@@ -33,4 +38,9 @@ open class BaseTest {
     fun <T> uninitialized(): T = null as T
 
     fun <T> whenever(methodCall: T): OngoingStubbing<T> = Mockito.`when`(methodCall)
+
+    @After
+    open fun tearDown() {
+        unmockkAll()
+    }
 }

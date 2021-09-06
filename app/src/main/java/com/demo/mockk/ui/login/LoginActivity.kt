@@ -14,7 +14,7 @@ import com.google.android.material.snackbar.Snackbar
 import org.koin.android.viewmodel.ext.android.viewModel
 
 /**
- * Created by ThanhPQ
+ * Create by ThanhPQ
  */
 class LoginActivity : AppCompatActivity() {
     private val loginViewModel: LoginViewModel by viewModel()

@@ -1,7 +1,7 @@
 package com.demo.mockk.data.remote
 
 /**
- * Created by ThanhPQ
+ * Create by ThanhPQ
  */
 data class LoginRequest(
     var username: String? = null,
